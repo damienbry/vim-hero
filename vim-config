@@ -1,0 +1,64 @@
+"color obsidian2
+syntax enable
+colorscheme gruvbox
+
+call plug#begin()
+
+Plug 'pangloss/vim-javascript'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'scrooloose/nerdtree'
+Plug 'Townk/vim-autoclose'
+Plug 'bit2pixel/vim-togglemouse'
+Plug 'itchyny/lightline.vim'
+Plug 'altercation/vim-colors-solarized'
+Plug 'mxw/vim-jsx'
+Plug 'morhetz/gruvbox'
+"Plug 'vim-syntastic/syntastic'
+Plug 'xolox/vim-misc'
+Plug 'xolox/vim-notes'
+Plug 'Lokaltog/vim-easymotion'
+Plug 'airblade/vim-gitgutter'
+Plug 'elzr/vim-json'
+
+call plug#end()
+
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlP'
+let g:ctrlp_working_path_mode = 'ra' "nearest ancestor containing .git folder
+let g:ctrlp_switch_buffer = 'et' "opens file in new pane
+"custom ctrlp ignore
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
+
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  '\v[\/]\.(git|hg|svn)$',
+  \ 'file': '\v\.(exe|so|dll)$',
+  \ 'link': 'some_bad_symbolic_links',
+  \ }
+
+let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard'] "ignore files in .gitignore
+
+map <C-n> :NERDTreeToggle<CR>
+
+set number "show line numbers
+set expandtab "converts tabs to spaces
+set tabstop=2 "tab => 2 spaces
+set shiftwidth=2 "ident => 2 spaces
+
+let g:jsx_ext_required = 0 "vim-jsx: jsx format also for .js files
+
+let g:gruvbox_contrast_dark = 'soft'
+
+set hlsearch "highlight matching phrases
+set ignorecase "you nearly always want this
+set smartcase  "case-sensitive if search contains an uppercase character
+
+"syntastic configurations
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+let g:syntastic_javascript_checkers = ['jscs']
