@@ -10,6 +10,7 @@ echo "- installing plugin manager: vim-plug"
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
+echo "- installing custom plugins & custom config"
 cp ./vim-config ~/.vimrc
 
 #npm i -g jscs

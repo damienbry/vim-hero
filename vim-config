@@ -22,6 +22,8 @@ Plug 'elzr/vim-json'
 
 call plug#end()
 
+au BufNewFile,BufRead *.es6 setf javascript "vim-javascript syntax for .es6 files"
+
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_working_path_mode = 'ra' "nearest ancestor containing .git folder
