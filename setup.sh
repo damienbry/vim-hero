@@ -13,6 +13,11 @@ curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
 echo "- installing custom plugins & custom config"
 cp ./vim-config ~/.vimrc
 
+echo "- simlinking vim config to neovim's"
+mkdir ~/.config
+ln -s ~/.vim ~/.config/nvim
+ln -s ~/.vimrc ~/.config/nvim/init.vim
+
 #npm i -g jscs
 
 echo "Setup finished ! Do a :PlugInstall vim and let's roll \o/"
