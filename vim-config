@@ -19,6 +19,7 @@ Plug 'xolox/vim-notes'
 Plug 'Lokaltog/vim-easymotion'
 Plug 'airblade/vim-gitgutter'
 Plug 'elzr/vim-json'
+Plug 'wakatime/vim-wakatime'
 
 call plug#end()
 
@@ -64,3 +65,5 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 let g:syntastic_javascript_checkers = ['jscs']
+
+autocmd BufWritePre * %s/\s\+$//e "removes trailing whitespaces before saving
