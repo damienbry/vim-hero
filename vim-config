@@ -46,6 +46,7 @@ set number "show line numbers
 set expandtab "converts tabs to spaces
 set tabstop=2 "tab => 2 spaces
 set shiftwidth=2 "ident => 2 spaces
+set list "show tabs character"
 
 let g:jsx_ext_required = 0 "vim-jsx: jsx format also for .js files
 
@@ -67,3 +68,10 @@ let g:syntastic_check_on_wq = 0
 let g:syntastic_javascript_checkers = ['jscs']
 
 autocmd BufWritePre * %s/\s\+$//e "removes trailing whitespaces before saving
+
+" Change Color when entering Insert Mode
+autocmd InsertEnter * set cursorline
+
+" Revert Color to default when leaving Insert Mode
+autocmd InsertLeave * set nocursorline
+inoremap <C-C> <Esc>
