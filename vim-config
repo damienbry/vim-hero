@@ -75,3 +75,6 @@ autocmd InsertEnter * set cursorline
 " Revert Color to default when leaving Insert Mode
 autocmd InsertLeave * set nocursorline
 inoremap <C-C> <Esc>
+
+"Paste in visual mode again and again
+xnoremap p pgvy
