@@ -20,6 +20,10 @@ Plug 'Lokaltog/vim-easymotion'
 Plug 'airblade/vim-gitgutter'
 Plug 'elzr/vim-json'
 Plug 'wakatime/vim-wakatime'
+Plug 'derekwyatt/vim-scala'
+Plug 'bkad/CamelCaseMotion'
+Plug 'craigemery/vim-autotag'
+Plug 'benmills/vimux'
 
 call plug#end()
 
@@ -78,3 +82,15 @@ inoremap <C-C> <Esc>
 
 "Paste in visual mode again and again
 xnoremap p pgvy
+
+let mapleader = ','
+
+autocmd FileType php setlocal shiftwidth=4 tabstop=4 "indent size only for php (my use case)
+
+" Prompt for a command to run
+map <Leader>vp :VimuxPromptCommand<CR>
+" Run last command executed by VimuxRunCommand
+map <Leader>vl :VimuxRunLastCommand<CR>
+
+"show the current command being entered
+set showcmd
