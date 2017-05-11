@@ -83,7 +83,9 @@ inoremap <C-C> <Esc>
 "Paste in visual mode again and again
 xnoremap p pgvy
 
+" Set Leader key and use camelCaseMotion default mappings
 let mapleader = ','
+call camelcasemotion#CreateMotionMappings('<leader>')
 
 autocmd FileType php setlocal shiftwidth=4 tabstop=4 "indent size only for php (my use case)
 
