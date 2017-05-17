@@ -19,11 +19,14 @@ Plug 'xolox/vim-notes'
 Plug 'Lokaltog/vim-easymotion'
 Plug 'airblade/vim-gitgutter'
 Plug 'elzr/vim-json'
+Plug 'zenbro/mirror.vim'
 Plug 'wakatime/vim-wakatime'
 Plug 'derekwyatt/vim-scala'
 Plug 'bkad/CamelCaseMotion'
 Plug 'craigemery/vim-autotag'
 Plug 'benmills/vimux'
+Plug 'mhinz/vim-startify'
+Plug 'terryma/vim-multiple-cursors'
 
 call plug#end()
 
