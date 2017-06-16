@@ -1,4 +1,4 @@
-"color obsidian2
+set mouse=a
 syntax enable
 colorscheme gruvbox
 set background=dark
