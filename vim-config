@@ -26,6 +26,7 @@ Plug 'craigemery/vim-autotag'
 Plug 'benmills/vimux'
 Plug 'mhinz/vim-startify'
 Plug 'terryma/vim-multiple-cursors'
+Plug 'amadeus/vim-mjml'
 
 call plug#end()
 
@@ -98,3 +99,11 @@ map <Leader>vl :VimuxRunLastCommand<CR>
 
 "show the current command being entered
 set showcmd
+
+"pgsql select current function
+map <Leader>vf ?create .* function<Enter><S-V>/\$\$ language<Enter>"*y
+"pgsql select current test
+map <Leader>vt ?begin;<Enter><S-V>/rollback<Enter>"*y
+
+set undofile " Maintain undo history between sessions
+set undodir=~/.vim/undodir
