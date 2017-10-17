@@ -27,6 +27,8 @@ Plug 'benmills/vimux'
 Plug 'mhinz/vim-startify'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'amadeus/vim-mjml'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-repeat'
 
 call plug#end()
 
@@ -107,3 +109,10 @@ map <Leader>vt ?begin;<Enter><S-V>/rollback<Enter>"*y
 
 set undofile " Maintain undo history between sessions
 set undodir=~/.vim/undodir
+
+" move text and re-highlight
+vnoremap > ><CR>gv
+vnoremap < <<CR>gv
+
+" search for visually selected text
+vnoremap // y/<C-R>"<CR>
