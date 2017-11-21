@@ -29,6 +29,8 @@ Plug 'terryma/vim-multiple-cursors'
 Plug 'amadeus/vim-mjml'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
+Plug 'takac/vim-hardtime'
+Plug 'alvan/vim-closetag'
 
 call plug#end()
 
@@ -103,7 +105,7 @@ map <Leader>vl :VimuxRunLastCommand<CR>
 set showcmd
 
 "pgsql select current function
-map <Leader>vf ?create .* function<Enter><S-V>/\$\$ language<Enter>"*y
+map <Leader>vf ?create .* function<Enter><S-V>/\$\$ language<Enter>"*y``zz:noh<Enter>
 "pgsql select current test
 map <Leader>vt ?begin;<Enter><S-V>/rollback<Enter>"*y
 
@@ -116,3 +118,6 @@ vnoremap < <<CR>gv
 
 " search for visually selected text
 vnoremap // y/<C-R>"<CR>
+
+" hard time mode
+let g:hardtime_default_on = 1
