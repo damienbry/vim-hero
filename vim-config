@@ -121,3 +121,6 @@ vnoremap // y/<C-R>"<CR>
 
 " hard time mode
 let g:hardtime_default_on = 1
+
+" delete attribute
+map da F d2f"
