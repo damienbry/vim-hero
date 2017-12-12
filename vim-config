@@ -2,6 +2,7 @@ set mouse=a
 syntax enable
 colorscheme gruvbox
 set background=dark
+set visualbell
 
 call plug#begin()
 
@@ -123,4 +124,7 @@ vnoremap // y/<C-R>"<CR>
 let g:hardtime_default_on = 1
 
 " delete attribute
-map da F d2f"
+map <Leader>da F d2f"
+
+" add class
+map tc vath%<Esc>f>i class=""<Esc>hi
