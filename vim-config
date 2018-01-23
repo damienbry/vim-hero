@@ -128,3 +128,12 @@ map <Leader>da F d2f"
 
 " add class
 map tc vath%<Esc>f>i class=""<Esc>hi
+
+" associate *.mustache with html filetype
+augroup filetypedetect
+    au BufRead,BufNewFile *.mustache setfiletype html
+augroup END
+
+" macros trigger rerender only at the end of their execution
+set lazyredraw
+
