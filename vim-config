@@ -138,3 +138,5 @@ augroup END
 " macros trigger rerender only at the end of their execution
 set lazyredraw
 
+" alvan/vim-closetag
+let g:closetag_filenames = '*.html,*.xhtml,*.phtml,*.mustache'
