@@ -87,6 +87,8 @@ autocmd InsertEnter * set cursorline
 
 " Revert Color to default when leaving Insert Mode
 autocmd InsertLeave * set nocursorline
+
+" map control+c to escape
 inoremap <C-C> <Esc>
 
 "Paste in visual mode again and again
@@ -140,3 +142,7 @@ set lazyredraw
 
 " alvan/vim-closetag
 let g:closetag_filenames = '*.html,*.xhtml,*.phtml,*.mustache'
+
+" markdown bold surround
+" I personnaly also mapped OSX Command + B to <C-B> via iTerm2 (using hex code 0x02)
+nnoremap <C-b> ciw****<Esc>h<S-P>
