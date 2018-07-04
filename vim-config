@@ -146,3 +146,9 @@ let g:closetag_filenames = '*.html,*.xhtml,*.phtml,*.mustache'
 " markdown bold surround
 " I personnaly also mapped OSX Command + B to <C-B> via iTerm2 (using hex code 0x02)
 nnoremap <C-b> ciw****<Esc>h<S-P>
+
+" <a href=""></a> helper with visual selection and clipboard url
+vnoremap <C-a> c<a href=""></a><Esc>?href=""<CR>5l"*pvit<Esc><S-p>
+
+" emoji helper
+nnoremap <C-I> a<i class="twa twa-"></i><Esc>5hi
