@@ -61,6 +61,13 @@ set tabstop=2 "tab => 2 spaces
 set shiftwidth=2 "ident => 2 spaces
 set list "show tabs character"
 
+augroup python_files
+    autocmd!
+    autocmd FileType python setlocal noexpandtab
+    autocmd FileType python set tabstop=4
+    autocmd FileType python set shiftwidth=4
+augroup END
+
 let g:jsx_ext_required = 0 "vim-jsx: jsx format also for .js files
 
 let g:gruvbox_contrast_dark = 'soft'
