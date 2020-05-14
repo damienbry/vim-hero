@@ -12,6 +12,7 @@ curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
 
 echo "- installing custom plugins & custom config"
 cp ./vim-config ~/.vimrc
+cp ./random_emoji.sh ~/.vim/random_emoji.sh
 
 echo "- simlinking vim config to neovim's"
 mkdir ~/.config

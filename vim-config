@@ -12,7 +12,7 @@ Plug 'scrooloose/nerdtree'
 Plug 'Townk/vim-autoclose'
 Plug 'bit2pixel/vim-togglemouse'
 Plug 'itchyny/lightline.vim'
-Plug 'mxw/vim-jsx'
+Plug 'MaxMEllon/vim-jsx-pretty'
 Plug 'morhetz/gruvbox'
 "Plug 'vim-syntastic/syntastic'
 Plug 'xolox/vim-misc'
@@ -25,7 +25,7 @@ Plug 'derekwyatt/vim-scala'
 Plug 'bkad/CamelCaseMotion'
 Plug 'craigemery/vim-autotag'
 Plug 'benmills/vimux'
-Plug 'mhinz/vim-startify'
+"Plug 'mhinz/vim-startify'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'amadeus/vim-mjml'
 Plug 'tpope/vim-surround'
@@ -35,6 +35,9 @@ Plug 'alvan/vim-closetag'
 Plug 'slim-template/vim-slim'
 Plug 'beyondwords/vim-twig'
 Plug 'digitaltoad/vim-pug'
+Plug 'tpope/vim-endwise'
+Plug 'leafgarland/typescript-vim'
+Plug 'severin-lemaignan/vim-minimap'
 
 call plug#end()
 
@@ -70,7 +73,7 @@ augroup python_files
     autocmd FileType python set shiftwidth=4
 augroup END
 
-let g:jsx_ext_required = 0 "vim-jsx: jsx format also for .js files
+"let g:jsx_ext_required = 0 "vim-jsx: jsx format also for .js files
 
 let g:gruvbox_contrast_dark = 'soft'
 
@@ -161,4 +164,14 @@ vnoremap <C-b> c****<Esc>h<S-P>
 vnoremap <C-a> c<a href="" target="_blank"></a><Esc>?href=""<CR>5l"*pvit<Esc><S-p>
 
 " emoji helper
-nnoremap <C-I> a<i class="twa twa-"></i><Esc>5hi
+" nnoremap <C-I> a<i class="twa twa-"></i><Esc>5hi
+
+" ruby quick log
+autocmd FileType ruby nnoremap <C-L> $v0wyip "<Enter><Esc>k$:r ! sh ~/.vim/random_emoji.sh<Enter>kJJ$a #{<Esc>pA}"<Esc>0f"lxf{l
+autocmd FileType javascript nnoremap <C-L> $v0wyiconsole.log(`<Enter><Esc>k$:r ! sh ~/.vim/random_emoji.sh<Enter>kJJ$a ${<Esc>pA}`)<Esc>0f"lxf{l
+
+" ruby tap log
+" nnoremap <S-T> o.tap{|x| p "🚰 #{x}"}<Esc>
+
+" minimap
+let g:minimap_toggle='<C-M>'
