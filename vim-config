@@ -168,10 +168,14 @@ vnoremap <C-a> c<a href="" target="_blank"></a><Esc>?href=""<CR>5l"*pvit<Esc><S-
 
 " ruby quick log
 autocmd FileType ruby nnoremap <C-L> $v0wyip "<Enter><Esc>k$:r ! sh ~/.vim/random_emoji.sh<Enter>kJJ$a #{<Esc>pA}"<Esc>0f"lxf{l
-autocmd FileType javascript nnoremap <C-L> $v0wyiconsole.log(`<Enter><Esc>k$:r ! sh ~/.vim/random_emoji.sh<Enter>kJJ$a ${<Esc>pA}`)<Esc>0f"lxf{l
+autocmd FileType javascript nnoremap <C-L> $v0wyiconsole.log('<Enter><Esc>k$:r ! sh ~/.vim/random_emoji.sh<Enter>kJJ$a ', <Esc>pA)<Esc>0f"lxf{l
 
 " ruby tap log
 " nnoremap <S-T> o.tap{|x| p "🚰 #{x}"}<Esc>
 
 " minimap
 let g:minimap_toggle='<C-M>'
+
+" git-gutter
+nmap gn <Plug>(GitGutterNextHunk)
+nmap gN <Plug>(GitGutterPrevHunk)
