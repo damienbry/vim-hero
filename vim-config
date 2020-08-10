@@ -177,5 +177,15 @@ autocmd FileType javascript nnoremap <C-L> $v0wyiconsole.log('<Enter><Esc>k$:r !
 let g:minimap_toggle='<C-M>'
 
 " git-gutter
-nmap gn <Plug>(GitGutterNextHunk)
-nmap gN <Plug>(GitGutterPrevHunk)
+function! GitGutterNextHunkCycle()
+  let line = line('.')
+  silent! GitGutterNextHunk
+  if line('.') == line
+    1
+    GitGutterNextHunk
+  endif
+endfunction
+
+nmap gn :call GitGutterNextHunkCycle()<CR>
+nmap gN :call GitGutterNextHunkCycle()<CR>
+
