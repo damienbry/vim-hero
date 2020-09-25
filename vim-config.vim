@@ -3,6 +3,7 @@ syntax enable
 colorscheme gruvbox
 set background=dark
 set visualbell
+set relativenumber
 
 call plug#begin()
 
@@ -38,10 +39,18 @@ Plug 'digitaltoad/vim-pug'
 Plug 'tpope/vim-endwise'
 Plug 'leafgarland/typescript-vim'
 Plug 'severin-lemaignan/vim-minimap'
+Plug 'tpope/vim-rails'
+"Plug 'jewes/Conque-Shell'
+
+" fuzzy finding
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+Plug 'kassio/neoterm'
 
 call plug#end()
 
-au BufNewFile,BufRead *.es6 setf javascript "vim-javascript syntax for .es6 files"
+au BufNewFile,BufRead *.es6 setf javascript "vim-javascript syntax for .es6 files
+au BufNewFile,BufRead *.fish setf sh "fish config files
 
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
@@ -188,4 +197,50 @@ endfunction
 
 nmap gn :call GitGutterNextHunkCycle()<CR>
 nmap gN :call GitGutterNextHunkCycle()<CR>
+
+" vim-rails config
+let g:rails_projections = {
+      \  "app/controllers/*.rb": {
+      \      "test": [
+      \        "spec/requests/{}_spec.rb",
+      \        "spec/controllers/{}_spec.rb",
+      \        "test/controllers/{}_test.rb"
+      \      ],
+      \      "alternate": [
+      \        "spec/requests/{}_spec.rb",
+      \        "spec/controllers/{}_spec.rb",
+      \        "test/controllers/{}_test.rb"
+      \      ],
+      \   },
+      \   "spec/requests/*_spec.rb": {
+      \      "command": "request",
+      \      "alternate": "app/controllers/{}.rb",
+      \      "template": [
+      \        "# frozen_string_literal: true",
+      \        "",
+      \        "require 'rails_helper'",
+      \        "",
+      \        "describe {camelcase|capitalize|colons} do",
+      \        "end"
+      \      ]
+      \   },
+      \   "spec/javascript/*.spec.js": {
+      \     "alternate": "app/javascript",
+      \     "railsRunner": "jest"
+      \   }
+      \ }
+" shortcut to launch rspec/jest
+command Test :Runner
+command Tes :Runner
+command Run :Runner
+
+" load ctags for files
+autocmd FileType ruby set tags=./ruby_tags,ruby_tags;./tags,tags;
+autocmd FileType javascript set tags=./js_tags,js_tags;./tags,tags;
+
+"neoterm
+let g:neoterm_shell = '/bin/zsh'
+let g:neoterm_default_mod = 'vertical'
+let g:neoterm_term_per_tab = 1 " Different terminal for each tab
+let g:neoterm_auto_repl_cmd = 0 " Do not launch rails console on TREPLsend
 

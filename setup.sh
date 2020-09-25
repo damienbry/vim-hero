@@ -11,7 +11,7 @@ curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
 echo "- installing custom plugins & custom config"
-cp ./vim-config ~/.vimrc
+cp ./vim-config.vim ~/.vimrc
 cp ./random_emoji.sh ~/.vim/random_emoji.sh
 
 echo "- simlinking vim config to neovim's"
