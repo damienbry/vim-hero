@@ -21,5 +21,9 @@ ln -s ~/.vimrc ~/.config/nvim/init.vim
 
 #npm i -g jscs
 
+echo "- copy fish script"
+rm -rf ~/.config/fish
+cp -r ./fish ~/.config
+
 echo "Setup finished ! Do a :PlugInstall vim and let's roll \o/"
 
