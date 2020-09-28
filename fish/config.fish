@@ -1,3 +1,5 @@
+set -U fish_prompt_pwd_dir_length 0 # show full path
+
 alias v="nvim"
 alias g="git"
 alias k="kubectl"
@@ -12,3 +14,6 @@ alias pgcomment=~/Dev/pgcomment/out/osx-x64/pgcomment
 alias rt="bundle exec rspec"
 alias ctags="`brew --prefix`/bin/ctags" # otherwise illegal option 'R' on mac (https://gist.github.com/nazgob/1570678)
 
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/.rvm/bin"
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
