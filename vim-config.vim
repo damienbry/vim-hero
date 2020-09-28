@@ -239,7 +239,7 @@ autocmd FileType ruby set tags=./ruby_tags,ruby_tags;./tags,tags;
 autocmd FileType javascript set tags=./js_tags,js_tags;./tags,tags;
 
 "neoterm
-let g:neoterm_shell = '/bin/zsh'
+let g:neoterm_shell = '/usr/local/bin/fish'
 let g:neoterm_default_mod = 'vertical'
 let g:neoterm_term_per_tab = 1 " Different terminal for each tab
 let g:neoterm_auto_repl_cmd = 0 " Do not launch rails console on TREPLsend

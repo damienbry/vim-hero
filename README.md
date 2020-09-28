@@ -15,7 +15,7 @@ Ruby
 `ctags -f ruby_tags -R --languages=ruby --exclude=.git --exclude=log . $(bundle list --paths)`
 
 Javascript
-`ctags -f js_tags -R --languages=javascript . $(./node_modules)`
+`ctags -f js_tags -R --languages=javascript --exclude=public . $(./node_modules)`
 
 
 ### Contributing

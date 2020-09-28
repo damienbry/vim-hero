@@ -25,5 +25,11 @@ echo "- copy fish script"
 rm -rf ~/.config/fish
 cp -r ./fish ~/.config
 
+echo "- install fish plugins"
+fish
+fisher add acomagu/fish-async-prompt
+fisher add franciscolourenco/done
+exit
+
 echo "Setup finished ! Do a :PlugInstall vim and let's roll \o/"
 
