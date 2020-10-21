@@ -5,6 +5,11 @@ set background=dark
 set visualbell
 set relativenumber
 
+let g:python3_host_prog = '/usr/local/bin/python3'
+"let g:python_host_prog = '/Users/damienbry/.pyenv/versions/neovim2/bin/python'
+"let g:ruby_host_prog = '/Users/damienbry/.rbenv/shims/neovim-ruby-host'
+"let g:node_host_prog = '/Users/damienbry/.nvm/versions/node/v14.8.0/bin/neovim-node-host'
+
 call plug#begin()
 
 Plug 'pangloss/vim-javascript'
@@ -15,10 +20,8 @@ Plug 'bit2pixel/vim-togglemouse'
 Plug 'itchyny/lightline.vim'
 Plug 'MaxMEllon/vim-jsx-pretty'
 Plug 'morhetz/gruvbox'
-"Plug 'vim-syntastic/syntastic'
 Plug 'xolox/vim-misc'
 Plug 'xolox/vim-notes'
-Plug 'Lokaltog/vim-easymotion'
 Plug 'airblade/vim-gitgutter'
 Plug 'elzr/vim-json'
 Plug 'zenbro/mirror.vim'
@@ -38,13 +41,17 @@ Plug 'beyondwords/vim-twig'
 Plug 'digitaltoad/vim-pug'
 Plug 'tpope/vim-endwise'
 Plug 'leafgarland/typescript-vim'
-Plug 'severin-lemaignan/vim-minimap'
 Plug 'tpope/vim-rails'
-"Plug 'jewes/Conque-Shell'
+Plug 'easymotion/vim-easymotion'
+
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' } " Fuzzy completion
+Plug 'Shougo/neosnippet'
+Plug 'damienbry/vim-snippets'
 
 " fuzzy finding
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
+
 Plug 'kassio/neoterm'
 
 call plug#end()
@@ -89,17 +96,6 @@ let g:gruvbox_contrast_dark = 'soft'
 set hlsearch "highlight matching phrases
 set ignorecase "you nearly always want this
 set smartcase  "case-sensitive if search contains an uppercase character
-
-"syntastic configurations
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-let g:syntastic_javascript_checkers = ['jscs']
 
 autocmd BufWritePre * %s/\s\+$//e "removes trailing whitespaces before saving
 
@@ -244,3 +240,41 @@ let g:neoterm_default_mod = 'vertical'
 let g:neoterm_term_per_tab = 1 " Different terminal for each tab
 let g:neoterm_auto_repl_cmd = 0 " Do not launch rails console on TREPLsend
 
+" Easymotion
+let g:EasyMotion_do_mapping = 0 " Disable default mappings
+
+" Jump to anywhere you want with minimal keystrokes, with just one key binding.
+" `s{char}{label}`
+nmap s <Plug>(easymotion-overwin-f)
+" or
+" `s{char}{char}{label}`
+" Need one more keystroke, but on average, it may be more comfortable.
+" nmap s <Plug>(easymotion-overwin-f2)
+
+" Turn on case-insensitive feature
+let g:EasyMotion_smartcase = 1
+
+" JK motions: Line motions
+map <Leader>j <Plug>(easymotion-j)
+map <Leader>k <Plug>(easymotion-k)
+
+" Deoplete (required for NeoSnippets)
+let g:deoplete#enable_at_startup=1
+
+" NeoSnippets
+let g:neosnippet#snippets_directory = "/Users/damienbry/.config/nvim/plugged/vim-snippets/neosnippets/"
+
+imap <C-e>     <Plug>(neosnippet_expand_or_jump)
+smap <C-e>     <Plug>(neosnippet_expand_or_jump)
+xmap <C-e>     <Plug>(neosnippet_expand_target)
+
+imap <expr><TAB>
+ \ pumvisible() ? "\<C-n>" :
+ \ neosnippet#expandable_or_jumpable() ?
+ \    "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+\ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+
+" Keep window centered when searching
+nnoremap n nzz
+nnoremap N Nzz
