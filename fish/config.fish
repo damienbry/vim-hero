@@ -1,5 +1,3 @@
-set -U fish_prompt_pwd_dir_length 0 # show full path
-
 alias v="nvim"
 alias g="git"
 alias k="kubectl"

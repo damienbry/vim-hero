@@ -4,6 +4,8 @@ colorscheme gruvbox
 set background=dark
 set visualbell
 set relativenumber
+set cursorline
+set cursorcolumn
 
 let g:python3_host_prog = '/usr/local/bin/python3'
 "let g:python_host_prog = '/Users/damienbry/.pyenv/versions/neovim2/bin/python'
@@ -30,23 +32,20 @@ Plug 'bkad/CamelCaseMotion'
 Plug 'craigemery/vim-autotag'
 Plug 'benmills/vimux'
 "Plug 'mhinz/vim-startify'
-Plug 'terryma/vim-multiple-cursors'
 Plug 'amadeus/vim-mjml'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
-Plug 'takac/vim-hardtime'
 Plug 'alvan/vim-closetag'
 Plug 'slim-template/vim-slim'
 Plug 'beyondwords/vim-twig'
 Plug 'digitaltoad/vim-pug'
 Plug 'tpope/vim-endwise'
 Plug 'leafgarland/typescript-vim'
-Plug 'tpope/vim-rails'
-Plug 'easymotion/vim-easymotion'
+Plug 'peitalin/vim-jsx-typescript'
 
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' } " Fuzzy completion
-Plug 'Shougo/neosnippet'
-Plug 'damienbry/vim-snippets'
+Plug 'tpope/vim-dispatch'
+Plug 'tpope/vim-rails'
+Plug 'tpope/vim-abolish'
 
 " fuzzy finding
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
@@ -54,10 +53,26 @@ Plug 'junegunn/fzf.vim'
 
 Plug 'kassio/neoterm'
 
+Plug 'easymotion/vim-easymotion'
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' } " Fuzzy completion
+Plug 'Shougo/neosnippet'
+Plug 'damienbry/vim-snippets'
+
+Plug 'kshenoy/vim-signature'
+Plug 'lifepillar/pgsql.vim'
+"Plug 'ivalkeen/vim-simpledb'
+
+" post install (yarn install | npm install) then load plugin only for editing supported files
+"Plug 'prettier/vim-prettier', {
+  "\ 'do': 'yarn install',
+  "\ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'svelte', 'yaml', 'html'] }
+
 call plug#end()
 
-au BufNewFile,BufRead *.es6 setf javascript "vim-javascript syntax for .es6 files
-au BufNewFile,BufRead *.fish setf sh "fish config files
+au BufNewFile,BufRead *.es6 set ft=javascript "vim-javascript syntax for .es6 files
+au BufNewFile,BufRead *.tsx set ft=javascript
+au BufNewFile,BufRead *.ts set ft=javascript
+au BufNewFile,BufRead *.fish set ft=sh "fish config files
 
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
@@ -100,10 +115,11 @@ set smartcase  "case-sensitive if search contains an uppercase character
 autocmd BufWritePre * %s/\s\+$//e "removes trailing whitespaces before saving
 
 " Change Color when entering Insert Mode
-autocmd InsertEnter * set cursorline
+autocmd InsertEnter * highlight CursorLine ctermbg=black
 
 " Revert Color to default when leaving Insert Mode
-autocmd InsertLeave * set nocursorline
+" use :hi to get current scheme colors
+autocmd InsertLeave * highlight CursorLine ctermbg=237 guibg=#3c3836
 
 " map control+c to escape
 inoremap <C-C> <Esc>
@@ -139,9 +155,6 @@ vnoremap < <<CR>gv
 
 " search for visually selected text
 vnoremap // y/<C-R>"<CR>
-
-" hard time mode
-let g:hardtime_default_on = 1
 
 " delete attribute
 map <Leader>da F d2f"
@@ -208,6 +221,14 @@ let g:rails_projections = {
       \        "test/controllers/{}_test.rb"
       \      ],
       \   },
+      \  "app/javascript/*.js": {
+      \      "test": [
+      \        "spec/javascript/{}.spec.js",
+      \      ],
+      \      "alternate": [
+      \        "spec/javascript/{}.spec.js",
+      \      ],
+      \   },
       \   "spec/requests/*_spec.rb": {
       \      "command": "request",
       \      "alternate": "app/controllers/{}.rb",
@@ -220,10 +241,6 @@ let g:rails_projections = {
       \        "end"
       \      ]
       \   },
-      \   "spec/javascript/*.spec.js": {
-      \     "alternate": "app/javascript",
-      \     "railsRunner": "jest"
-      \   }
       \ }
 " shortcut to launch rspec/jest
 command Test :Runner
@@ -235,7 +252,7 @@ autocmd FileType ruby set tags=./ruby_tags,ruby_tags;./tags,tags;
 autocmd FileType javascript set tags=./js_tags,js_tags;./tags,tags;
 
 "neoterm
-let g:neoterm_shell = '/usr/local/bin/fish'
+"let g:neoterm_shell = '/usr/local/bin/fish'
 let g:neoterm_default_mod = 'vertical'
 let g:neoterm_term_per_tab = 1 " Different terminal for each tab
 let g:neoterm_auto_repl_cmd = 0 " Do not launch rails console on TREPLsend
@@ -278,3 +295,28 @@ smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
 " Keep window centered when searching
 nnoremap n nzz
 nnoremap N Nzz
+
+" syntax .sql files
+let g:sql_type_default = 'pgsql'
+
+" disable TSX support for jsx-pretty, we use another plugin for that (vim-jsx-typescript)
+let g:vim_jsx_pretty_disable_tsx = 1
+
+" Disable Arrow keys in Normal mode
+map <up> <nop>
+map <down> <nop>
+map <left> <nop>
+map <right> <nop>
+
+" Disable Arrow keys in Insert mode
+imap <up> <nop>
+imap <down> <nop>
+imap <left> <nop>
+imap <right> <nop>
+
+" Prettier config
+"let g:prettier#autoformat = 1
+"let g:prettier#autoformat_require_pragma = 0
+
+" surround node if
+nnoremap <C-i> 0Cif() {<Enter><Esc>Po}<Esc>?if() {<Enter>2la
