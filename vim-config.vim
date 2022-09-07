@@ -59,7 +59,7 @@ Plug 'Shougo/neosnippet'
 Plug 'damienbry/vim-snippets'
 
 Plug 'kshenoy/vim-signature'
-Plug 'lifepillar/pgsql.vim'
+"Plug 'lifepillar/pgsql.vim'
 "Plug 'ivalkeen/vim-simpledb'
 
 " post install (yarn install | npm install) then load plugin only for editing supported files
@@ -142,9 +142,9 @@ map <Leader>vl :VimuxRunLastCommand<CR>
 set showcmd
 
 "pgsql select current function
-map <Leader>vf ?create .* function<Enter><S-V>/\$\$ language<Enter>"*y``zz:noh<Enter>
+"map <Leader>vf ?create .* function<Enter><S-V>/\$\$ language<Enter>"*y``zz:noh<Enter>
 "pgsql select current test
-map <Leader>vt ?begin;<Enter><S-V>/rollback<Enter>"*y
+"map <Leader>vt ?begin;<Enter><S-V>/rollback<Enter>"*y
 
 set undofile " Maintain undo history between sessions
 set undodir=~/.vim/undodir
