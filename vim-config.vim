@@ -27,11 +27,8 @@ Plug 'xolox/vim-notes'
 Plug 'airblade/vim-gitgutter'
 Plug 'elzr/vim-json'
 Plug 'zenbro/mirror.vim'
-Plug 'derekwyatt/vim-scala'
 Plug 'bkad/CamelCaseMotion'
 Plug 'craigemery/vim-autotag'
-Plug 'benmills/vimux'
-"Plug 'mhinz/vim-startify'
 Plug 'amadeus/vim-mjml'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
@@ -44,14 +41,11 @@ Plug 'leafgarland/typescript-vim'
 Plug 'peitalin/vim-jsx-typescript'
 
 Plug 'tpope/vim-dispatch'
-Plug 'tpope/vim-rails'
 Plug 'tpope/vim-abolish'
 
 " fuzzy finding
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-
-Plug 'kassio/neoterm'
 
 Plug 'easymotion/vim-easymotion'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' } " Fuzzy completion
@@ -87,7 +81,7 @@ let g:ctrlp_custom_ignore = {
   \ 'link': 'some_bad_symbolic_links',
   \ }
 
-let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard'] "ignore files in .gitignore
+let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard | grep -v ".yarn"'] "ignore files in .gitignore
 
 map <C-n> :NERDTreeToggle<CR>
 
