@@ -165,7 +165,7 @@ augroup END
 set lazyredraw
 
 " alvan/vim-closetag
-let g:closetag_filenames = '*.html,*.xhtml,*.phtml,*.mustache,*.md,*.twig,*.jsx,*.tsx,*.js,*.ts'
+let g:closetag_filenames = '*.html,*.xhtml,*.phtml,*.mustache,*.md,*.twig,*.jsx,*.tsx,*.js'
 
 " markdown bold surround
 " I personnaly also mapped OSX Command + B to <C-B> via iTerm2 (using hex code 0x02)
